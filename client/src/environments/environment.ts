@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  BASE_URL: "",
+  BASE_URL: "https://emotions-recomm.herokuapp.com/",
 };
