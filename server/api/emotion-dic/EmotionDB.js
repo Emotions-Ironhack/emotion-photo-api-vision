@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Dictionary = require('./emotionSchema');
 // {Object[0]} ==> Music {Object[1]}==> Films
-mongoose.connect(`mongodb://localhost/emotions`);
+// mongoose.connect(`mongodb://localhost/emotions`);
 
 const EmotionDic = [
   {
