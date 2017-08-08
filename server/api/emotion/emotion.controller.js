@@ -59,6 +59,7 @@ exports.createEmotion = (req, res)=> {
         else
           infoImage.url = req.file.filename;
 
+        console.log('INFOURLIMAGE:::::',infoImage);
         resolve(infoImage);
 
       } else {
