@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  BASE_URL: "sdad",
+  BASE_URL: "",
 };
