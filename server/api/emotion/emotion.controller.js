@@ -43,7 +43,7 @@ exports.getEmotion = (req, res) => {
 exports.createEmotion = (req, res)=> {
 
   // function uploadTotal() {
-  let requestUpload = new Promise((resolve, reject) => {
+  // let requestUpload = new Promise((resolve, reject) => {
     upload(req, res, function(err) {
 
       let infoImage = {};
@@ -59,44 +59,44 @@ exports.createEmotion = (req, res)=> {
         else
           infoImage.url = req.file.filename;
 
-        resolve(infoImage);
+        // resolve(infoImage);
 
       } else {
-        reject(err => {
+        // reject(err => {
           console.loog('ERROR in Server createEmotion Reject: ',err);
-          infoImage.url = "http://marioms.com/scarlet2.jpg";
-          return infoImage;
-        });
+
+        // });
       }
 
     });
 
-  }); // end promise
+  // }); // end promise
 
   // 2 - Call to API Vision
-  let visionPromise = new Promise((resolve, reject) => {
-    // upload image THEN
-    requestUpload.then(infoImage => {
-      let objEmotion = visionService(infoImage.url, infoImage.userRef);
-      resolve(objEmotion);
-    });
-  });
+  // let visionPromise = new Promise((resolve, reject) => {
+  //   // upload image THEN
+  //   requestUpload.then(infoImage => {
+  //     let objEmotion = visionService(infoImage.url, infoImage.userRef);
+  //     resolve(objEmotion);
+  //   })
+  //   .catch( err => console.log(err));
+  // });
 
   // 3 - Create new emotion
-  visionPromise.then(objEmotion => {
-
-    let maxEmotionObj = emotionAux.getMaxEmotion(objEmotion[0].scores);
-
-    const newEmotion = new Emotion({
-      userRef: objEmotion.userRef,
-      emotions: objEmotion[0].scores,
-      maxEmotion: maxEmotionObj,
-      image_path: objEmotion.imageURL
-    });
-
-    console.log('NEW EMOTION', newEmotion);
-
-    emotionAux.saveEmotion(res, newEmotion);
-  }).catch(err => console.log('Error visionPromise: ', err));
+  // visionPromise.then(objEmotion => {
+  //
+  //   let maxEmotionObj = emotionAux.getMaxEmotion(objEmotion[0].scores);
+  //
+  //   const newEmotion = new Emotion({
+  //     userRef: objEmotion.userRef,
+  //     emotions: objEmotion[0].scores,
+  //     maxEmotion: maxEmotionObj,
+  //     image_path: objEmotion.imageURL
+  //   });
+  //
+  //   console.log('NEW EMOTION', newEmotion);
+  //
+  //   emotionAux.saveEmotion(res, newEmotion);
+  // }).catch(err => console.log('Error visionPromise: ', err));
 
 };
