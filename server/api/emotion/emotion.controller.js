@@ -53,11 +53,12 @@ exports.createEmotion = (req, res)=> {
 
         // check if url is localhost
         console.log('HOSTNAME: ',req.get('host'));
+        let hostName = req.get('host');
 
-        if (req.get('host').includes('localhost'))
+        if (hostName.includes('localhost'))
           infoImage.url = 'http://marioms.com/scarlet2.jpg';
         else
-          infoImage.url = req.file.filename;
+          infoImage.url = `https://${hostName}/uploads/${req.file.filename}`;
 
         console.log('INFOURLIMAGE:::::',infoImage);
         resolve(infoImage);

@@ -18,7 +18,7 @@ module.exports = function(urlImage,userRef) {
 
   let requestEmotion = new Promise((resolve, reject) => {
     request(options, function (error, response, body) {
-      console.log('BODY', body);
+        console.log('BODY', body);
         if (!error && response.statusCode == 200) {
           var obj = JSON.parse(body);
           resolve(obj);
