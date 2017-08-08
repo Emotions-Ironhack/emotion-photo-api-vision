@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
-import { FileUploadModule } from "ng2-file-upload";
+// import { FileUploadModule } from "ng2-file-upload";
+import { FileSelectDirective } from "ng2-file-upload";
 
 // Routes
 import { RouterModule } from '@angular/router';
@@ -23,8 +24,6 @@ import { SignupComponent } from './signup/signup.component';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 import { EmotionSingleComponent } from './emotion-single/emotion-single.component';
-import { RecommedationListComponent } from './recommedation-list/recommedation-list.component';
-import { RecommendationSingleComponent } from './recommendation-single/recommendation-single.component';
 
 
 @NgModule({
@@ -36,15 +35,15 @@ import { RecommendationSingleComponent } from './recommendation-single/recommend
     SignupComponent,
     UserComponent,
     HomeComponent,
+    FileSelectDirective,
     EmotionSingleComponent,
-    RecommedationListComponent,
-    RecommendationSingleComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    FileUploadModule,
+    // FileUploadModule,
     RouterModule.forRoot(routes)
   ],
   providers: [SessionService, LoggedInService, EmotionService, RecommendationService],
