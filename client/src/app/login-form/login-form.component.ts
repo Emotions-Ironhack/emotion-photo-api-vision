@@ -10,7 +10,7 @@ export class LoginFormComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private session: SessionService) { }
+  constructor(public session: SessionService) { }
 
   ngOnInit() { }
 
