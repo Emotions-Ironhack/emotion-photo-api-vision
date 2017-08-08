@@ -47,11 +47,13 @@ exports.createEmotion = (req, res)=> {
     upload(req, res, function(err) {
 
       let infoImage = {};
-
       if (req.body.userRef) infoImage.userRef = req.body.userRef;
+
       if (req.file) {
+
         // check if url is localhost
         console.log('HOSTNAME: ',req.get('host'));
+
         if (req.get('host').includes('localhost'))
           infoImage.url = 'http://marioms.com/scarlet2.jpg';
         else
@@ -62,6 +64,8 @@ exports.createEmotion = (req, res)=> {
       } else {
         reject(err => {
           console.loog('ERROR in Server createEmotion Reject: ',err);
+          infoImage.url = "http://marioms.com/scarlet2.jpg";
+          return infoImage;
         });
       }
 
