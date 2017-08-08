@@ -1,0 +1,25 @@
+.emotion {
+  border: 1px solid #e6e6e6;
+  border-radius: 7px;
+  width: 25%;
+  padding: 10px;
+  text-align: center;
+}
+
+.img-container {
+  width: 124px;
+  height: 292px;
+  margin: 0;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+  margin: 50px auto 0 auto;
+}
+
+.recomm-container{
+  border: 2px solid #e6e6e6;
+  padding: 10px;
+  margin: 20px;
+}

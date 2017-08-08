@@ -1,0 +1,10 @@
+<h1> Sense To Music Converter </h1>
+
+<form>
+  <div>
+    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+  </div>
+  <br>
+  <button type="button" (click)="submit()" [disabled]="!uploader.getNotUploadedItems().length">Upload all</button>
+  <br>
+</form>
