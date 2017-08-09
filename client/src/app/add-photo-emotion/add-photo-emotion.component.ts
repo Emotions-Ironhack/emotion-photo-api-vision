@@ -18,7 +18,7 @@ export class AddPhotoEmotionComponent implements OnInit {
     name: ''
   };
   feedback: string;
-  isFinish: boolean = false;
+
   public uploader: FileUploader = new FileUploader({
     url: URL
   });
@@ -30,20 +30,13 @@ export class AddPhotoEmotionComponent implements OnInit {
 
   submit() {
     this.uploader.onBuildItemForm = (item, form) => {
-      console.log('item form',item, form);
       form.append('userRef', this.session.user._id);
     };
-    console.log('seession user',this.session.user._id);
     this.uploader.uploadAll();
     this.uploader.onCompleteItem = () => {
-      console.log('uploaded finished!');
+      console.log('Uploaded finished!');
       this.router.navigate(['/emotion/user', this.session.user._id]);
     }
-  }
-
-  redirectView(){
-    console.log('aaqui')
-    this.router.navigate(['/emotion/user', this.session.user._id ]);
   }
 
 }
