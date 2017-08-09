@@ -66,8 +66,6 @@ exports.createEmotion = (req, res)=> {
       } else {
         reject(err => {
           console.loog('ERROR in Server createEmotion Reject: ',err);
-          infoImage.url = "http://marioms.com/scarlet2.jpg";
-          return infoImage;
         });
       }
 

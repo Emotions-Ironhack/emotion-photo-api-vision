@@ -26,6 +26,8 @@ import { EmotionSingleComponent } from './emotion-single/emotion-single.componen
 import { RecommedationListComponent } from './recommedation-list/recommedation-list.component';
 import { RecommendationSingleComponent } from './recommendation-single/recommendation-single.component';
 
+// animations
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { RecommendationSingleComponent } from './recommendation-single/recommend
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes)

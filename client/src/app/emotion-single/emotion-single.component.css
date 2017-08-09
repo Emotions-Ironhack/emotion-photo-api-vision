@@ -7,19 +7,20 @@
 }
 
 .img-container {
-  width: 124px;
-  height: 292px;
+  width: 40px;
+  height: 40px;
   margin: 0;
 }
 
 .img-container img {
   width: 100%;
   height: auto;
-  margin: 50px auto 0 auto;
+  margin: 10px auto 0 auto;
 }
 
-.recomm-container{
+.recomm-container {
   border: 2px solid #e6e6e6;
-  padding: 10px;
-  margin: 20px;
+  padding: 0 10px;
+  margin: 10px;
+  height: 140px;
 }
