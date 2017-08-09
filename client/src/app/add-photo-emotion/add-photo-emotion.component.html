@@ -1,10 +1,22 @@
-<h1> Sense To Music Converter </h1>
+<div class="row">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <h1> Sense To Music Converter </h1>
 
-<form>
-  <div>
-    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+    <jaspero-alerts></jaspero-alerts>
+
+    <div class="bs-example">
+      <div class="progress" style="">
+        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+      </div>
+
+      <form>
+        <div class="form-group">
+          <label for="exampleInputFile">Browse image</label>
+          <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+        </div>
+        <button class="btn btn-default" type="button" (click)="submit()" [disabled]="!uploader.getNotUploadedItems().length">Upload Photo</button>
+      </form>
+    </div>
+
   </div>
-  <br>
-  <button type="button" (click)="submit()" [disabled]="!uploader.getNotUploadedItems().length">Upload all</button>
-  <br>
-</form>
+</div>

@@ -28,6 +28,7 @@ import { RecommendationSingleComponent } from './recommendation-single/recommend
 
 // animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JasperoAlertsModule } from '@jaspero/ng2-alerts';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    JasperoAlertsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [SessionService, LoggedInService, EmotionService, RecommendationService],

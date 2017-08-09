@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n", ""]);
+exports.push([module.i, "body {\n  background: #3494E6;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #EC6EAD, #3494E6);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n\n.navbar {\n   background-color: transparent;\n   background: transparent;\n   border-color: transparent;\n}\n\n.navbar li { color: #000 }\n\na {\n  color: black;\n}\n", ""]);
 
 // exports
 
