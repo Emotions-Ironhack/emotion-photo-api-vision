@@ -1,26 +1,64 @@
-.emotion {
-  border: 1px solid #e6e6e6;
-  border-radius: 7px;
-  width: 25%;
-  padding: 10px;
+.row{
+  margin-left: 10%;
+  margin-right: 10%;
   text-align: center;
 }
 
-.img-container {
-  width: 40px;
-  height: 40px;
-  margin: 0;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #dedede;
+    margin: 20px;
 }
-
-.img-container img {
-  width: 100%;
-  height: auto;
-  margin: 10px auto 0 auto;
+.card-style {
+    display: block;
+    background-color: #fff;
+    height: 100px;
+    width: 350px;
+    margin: 20px 0px;
+    margin-left: 15%;
+    margin-right: 15%;
+    box-shadow: 1px 1px 8px #999;
+    cursor: pointer;
+}
+.preview {
+  margin-top: 10px; 
 }
 
 .recomm-container {
-  border: 2px solid #e6e6e6;
-  padding: 0 10px;
-  margin: 10px;
-  height: 140px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+.card-img {
+    height: 100px;
+    width: 100px;
+}
+.media {
+
+}
+.media-heading {
+
+    color: #444;
+}
+.media-heading:hover, a:link {
+    color: #00C853;
+    text-decoration: none;
+}
+.members {
+    margin-top: 20px;
+    color: #999;
+    float: left;
+ }
+ .btn-part {
+     display: inline-block;
+     margin: 10px;
+     float: right;
+ }
+ .badge {
+     display: inline-block;
+     background: #00C853;
+     float: right;
+     padding: 7px;
+     border-radius: 50px;
+     margin: 10px;
+ }

@@ -1,27 +1,41 @@
 <div *ngIf="emotion">
-  <!-- IMPORTANT ngIF para que no de error hasta que no se resuelva la promesa -->
-  <a [routerLink]="['/emotion/user', emotion.userRef._id]"> Back to list </a>
-  <div class="emotion-info">
-    <p> {{ emotion.maxEmotion.name }} : {{ emotion.maxEmotion.score }}</p>
-    <div class="img-container">
-      <img src="{{ emotion.image_path }}" alt="{{ emotion.image_path }}">
+  <div class="row">
+    <h3>Music for feelings</h3>
+    <div class="col-md-6 col-md-offset-3">
+      <img src="{{ emotion.image_path }}" alt="{{ emotion.image_path }}" style="height: 175px;">
+      <br>
+      <div class="card-block">
+        <h4 class="card-title">It seems that you feel...</h4>
+        <h4 class="card-text">...{{ emotion.maxEmotion.name }}...</h4>
+        <h4 class="card-title">...I think you might like this...</h4>
+        <a class="btn btn-primary" (click)="createEmotionRecomm()">MUSIC</a>
+        <br>
+      </div>
+      <br>
     </div>
-    <span>USER: {{emotion.userRef.username }} - {{ emotion.userRef.email }} (NOTA: Igual esto no hace falta porque siempre va estar logueado para poder ver tus emotions</span>
-    <span>CREATED AT: {{emotion.created_at}}</span>
-    <button (click)="createEmotionRecomm()">Generate a Recommendation</button>
-    <!-- <p> JSON: {{emotion | json }}</p> -->
   </div>
 </div>
 
 <div *ngIf="recomms">
-   <div class="recomm-container" *ngFor="let track of staggeringrecomms; let i = index" (@flyInOut.done)="doNext()" [@flyInOut]="'in'">
-       <button [@flyInOut]="'in'" (click)="removeMe(i)">Delete</button>
-       <h6>{{track.trackName}}</h6>
-       <div class="img-container"><img src="{{track.artistUrlImg}}" alt="{{track.artistUrlImg}}"></div>
-       <span><a href="{{track.linkUrl}}" target="_blank">Link to spotify</a></span>
-       <p>{{track.previewUrl}}</p>
-   </div>
+  <div class="recomm-container" *ngFor="let track of staggeringrecomms; let i = index" (@flyInOut.done)="doNext()" [@flyInOut]="'in'">
+    <div class="row">
+      <div class="media">
+        <div class="media-left">
+          <img class="media-object img-thumbnail card-img" src="{{track.artistUrlImg}}" alt="{{track.artistUrlImg}}">
+        </div>
+        <div class="media-body">
+          <a><h5 class="media-heading">Song: {{track.trackName}}</h5></a>
+          <a><h5 class="media-heading">Album: {{track.albumName}}</h5></a>
+          <a><h5 class="media-heading">Artist: {{track.artistName}}</h5></a>
+          <a href="{{track.linkUrl}}" target="_blank">Link to spotify</a>
+          <a><button type="button" class="btn btn-danger" [@flyInOut]="'in'" (click)="removeMe(i)">Delete</button></a>
+        </div>
+      </div>
+      <audio class="preview" controls="" name="media"><source src="{{track.previewUrl}}" type="audio/mpeg"></audio>
+    </div>
+  </div>
 </div>
+
 
 
 <!-- <app-recommendation-single></app-recommendation-single> -->
