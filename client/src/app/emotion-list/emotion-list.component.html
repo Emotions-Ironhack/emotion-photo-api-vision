@@ -2,7 +2,7 @@
 
   <h2> User Emotions List </h2>
   <a [routerLink]="['/new']">Add photo</a>
-
+  <a [routerLink]="['/user/login']">User Data</a>
 
   <div *ngFor="let emotion of emotions" class="emotion">
     <div class="img-container">
@@ -12,3 +12,19 @@
     <a [routerLink]="['/emotion', emotion._id]"> View Detail </a>
   </div>
 </div>
+
+<!--
+<div>
+
+  <h2> User Emotions List </h2>
+  <a [routerLink]="['/new']">Add photo</a>
+
+
+  <div *ngFor="let emotion of emotions" class="emotion">
+    <div class="img-container">
+      <img src="{{ emotion.image_path }}" alt="{{ emotion.image_path }}">
+    </div>
+    <h3> {{ emotion.maxEmotion.name }} :  {{ emotion.maxEmotion.score }} </h3>
+    <a [routerLink]="['/emotion', emotion._id]"> View Detail </a>
+  </div>
+</div> -->

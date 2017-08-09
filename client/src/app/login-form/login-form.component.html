@@ -1,4 +1,41 @@
-<div *ngIf="session.user">
+<div *ngIf="session.user" class="container">
+	<div class="row">
+		<div class="col-lg-3 col-sm-6">
+
+            <div class="card hovercard">
+                <div class="cardheader">
+
+                </div>
+                <div class="avatar">
+                    <img alt="" src="../../assets/login.jpg">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank">{{session.user.username}}</a>
+                    </div>
+                    <div class="desc">Email: {{session.user.email}}</div>
+                    <div class="desc">Register From: {{session.user.created_at}}</div>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+
+<div *ngIf="!session.user">
+  <div class="wrapper">
+    <form class="form-signin">
+      <img class="img-responsive" src="../../assets/w4mw.png" alt="">
+      <br>
+      <input type="text" [(ngModel)]="username" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
+      <input type="password" [(ngModel)]="password" class="form-control" name="password" placeholder="Password" required=""/>
+      <br>
+      <button (click)="login()" class="btn btn-lg btn-primary btn-block">Login</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- <div *ngIf="session.user">
   <pre>{{ session.user | json }}</pre>
   <a [routerLink]="['/new']">Add photo</a>
   <a [routerLink]="['/emotion/user', session.user._id]">View Emotions List </a>
@@ -17,4 +54,4 @@
     <button (click)="login()"> login </button>
   </form>
   <p class="error"> {{ error }} </p>
-</div>
+</div> -->
