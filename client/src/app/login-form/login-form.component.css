@@ -1,6 +1,7 @@
 .wrapper {
 	margin-top: 80px;
   margin-bottom: 80px;
+	text-align: center;
 }
 
 .form-signin {
@@ -227,7 +228,10 @@
 }
 
 .card.hovercard {
-    position: relative;
+		height: 75%;
+		margin-left: 10%;
+		margin-right: 10%;
+		position: relative;
     padding-top: 0;
     overflow: hidden;
     text-align: center;
