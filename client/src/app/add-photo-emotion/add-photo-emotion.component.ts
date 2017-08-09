@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {environment} from '../../environments/environment';
 import { SessionService } from '../../services/session.service';
 
+
 // const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 const URL = `${environment.BASE_URL}/api/emotion/new`;
 
@@ -17,22 +18,32 @@ export class AddPhotoEmotionComponent implements OnInit {
     name: ''
   };
   feedback: string;
-
+  isFinish: boolean = false;
   public uploader: FileUploader = new FileUploader({
     url: URL
   });
   constructor(public router: Router, public session: SessionService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
 
   submit() {
     this.uploader.onBuildItemForm = (item, form) => {
       console.log('item form',item, form);
       form.append('userRef', this.session.user._id);
-
     };
     console.log('seession user',this.session.user._id);
     this.uploader.uploadAll();
+    this.uploader.onCompleteItem = () => {
+      console.log('uploaded finished!');
+      this.router.navigate(['/emotion/user', this.session.user._id]);
+    }
+  }
+
+  redirectView(){
+    console.log('aaqui')
+    this.router.navigate(['/emotion/user', this.session.user._id ]);
   }
 
 }
