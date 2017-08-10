@@ -69,6 +69,7 @@ exports.createEmotion = (req, res) => {
     })
     .then(newEmotion => emotionAux.saveEmotion(res, newEmotion))
     .catch(function(err) {
+      console.log('errr', err);
       res.status(500).json(err.message || err);
     });
 };

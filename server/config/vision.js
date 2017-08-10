@@ -17,5 +17,9 @@ module.exports = function(urlImage) {
 
   return got
     .post(url, options)
-    .then(res  => res.body);
+    .then(res  => {
+      console.log('resss',res);
+      return res.body;
+    })
+    .catch( err => console.log('error vision:',err) );
 };
