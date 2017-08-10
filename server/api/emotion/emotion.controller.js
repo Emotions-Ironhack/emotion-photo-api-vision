@@ -48,6 +48,8 @@ exports.createEmotion = (req, res) => {
   let userRef;
   let imageURL;
 
+  console.log('entra en createEmotion');
+
   pify(upload)(req, res)
     .then(function() {
       if (req.body.userRef) userRef = req.body.userRef;
@@ -55,6 +57,8 @@ exports.createEmotion = (req, res) => {
       imageURL = hostName.includes('localhost') ?
         'http://marioms.com/scarlet2.jpg' :
         `https://${hostName}/uploads/${req.file.filename}`;
+
+      console.log('ImageURL-->',imageURL);
       return imageURL;
     })
     .then(imgUrl => visionService(imgUrl))
