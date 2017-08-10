@@ -18,7 +18,7 @@
 
 <div *ngIf="recomms">
   <div class="recomm-container" *ngFor="let track of staggeringrecomms; let i = index" (@flyInOut.done)="doNext()" [@flyInOut]="'in'">
-    <div class="row">
+    <div class="row cartas">
       <div class="media">
         <div class="media-left">
           <img class="media-object img-thumbnail card-img" src="{{track.artistUrlImg}}" alt="{{track.artistUrlImg}}">

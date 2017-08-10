@@ -13,12 +13,16 @@ export class EmotionListComponent implements OnInit {
 
   emotions: Observable<Array<Object>>;
   user: object;
+  userName : string;
 
   constructor(private sessionserv: SessionService, private emotionserv: EmotionService) { }
 
   ngOnInit() {
     this.emotionserv.getUserEmotions(this.sessionserv.user._id)
-      .subscribe((emotions) => this.emotions = emotions);
+      .subscribe((emotions) => {
+        this.userName = this.sessionserv.user.username;
+        return this.emotions = emotions
+      });
   }
 
 }

@@ -9,9 +9,9 @@ exports.listUserEmotions = (req, res)=> {
 
   let userRef = req.params.userId;
 
-  Emotion.find({
-      userRef: userRef
-    }).exec()
+Emotion.find({ userRef: userRef }).populate('userRef')
+    .sort({ created_at:-1 })
+    .exec()
     .then(list => {
       res.json(list);
     }).catch(err => {
