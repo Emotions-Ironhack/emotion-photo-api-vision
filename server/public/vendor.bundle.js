@@ -1,5 +1,289 @@
 webpackJsonp([3],{
 
+/***/ "../../../../@jaspero/ng2-alerts/dist/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_alerts_component__ = __webpack_require__("../../../../@jaspero/ng2-alerts/dist/src/alerts.component.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_alerts_service__ = __webpack_require__("../../../../@jaspero/ng2-alerts/dist/src/alerts.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_alert_component__ = __webpack_require__("../../../../@jaspero/ng2-alerts/dist/src/alert.component.js");
+/* unused harmony namespace reexport */
+/* unused harmony namespace reexport */
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__src_alerts_service__["a"]; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return JasperoAlertsModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+var JasperoAlertsModule = (function () {
+    function JasperoAlertsModule() {
+    }
+    return JasperoAlertsModule;
+}());
+JasperoAlertsModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"]],
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__src_alerts_component__["a" /* AlertsComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__src_alert_component__["a" /* AlertComponent */]
+        ],
+        providers: [__WEBPACK_IMPORTED_MODULE_3__src_alerts_service__["a" /* AlertsService */]],
+        exports: [__WEBPACK_IMPORTED_MODULE_2__src_alerts_component__["a" /* AlertsComponent */]]
+    })
+], JasperoAlertsModule);
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../@jaspero/ng2-alerts/dist/src/alert.component.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_animations__ = __webpack_require__("../../../animations/@angular/animations.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AlertComponent = (function () {
+    function AlertComponent(_injector, _ngZone) {
+        this._injector = _injector;
+        this._ngZone = _ngZone;
+        this.animationState = 'enter';
+        this.close = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.incomingData = {
+            message: '',
+            overlay: true,
+            overlayClickToClose: true,
+            showCloseButton: true,
+            duration: 0
+        };
+    }
+    AlertComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.type = this._injector.get('type');
+        for (var key in this.incomingData)
+            this.incomingData[key] = this._injector.get(key);
+        if (this.incomingData.duration) {
+            this._ngZone.runOutsideAngular(function () {
+                return setTimeout(function () {
+                    return _this._ngZone.run(function () {
+                        return _this.closeSelf();
+                    });
+                }, _this.incomingData.duration);
+            });
+        }
+    };
+    AlertComponent.prototype.closeSelf = function () {
+        this.animationState = 'leave';
+        this.close.emit(Object.assign({ close: true }, this.incomingData));
+    };
+    AlertComponent.prototype.overlayClick = function () {
+        if (!this.incomingData.overlayClickToClose)
+            return;
+        this.closeSelf();
+    };
+    return AlertComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+], AlertComponent.prototype, "close", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["HostBinding"])('class'),
+    __metadata("design:type", String)
+], AlertComponent.prototype, "type", void 0);
+AlertComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'jaspero-alert',
+        template: "\n        <div *ngIf=\"incomingData.overlay\" class=\"jaspero__overlay\" [@overlayAn]=\"animationState\" (click)=\"overlayClick()\"></div>\n        <div class=\"jaspero__dialog\" [@wrapperAn]=\"animationState\">\n            <div class=\"jaspero__dialog-icon\" [ngSwitch]=\"type\">\n                <ng-template ngSwitchCase=\"success\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 490.4 490.4\">\n                        <path d=\"M245.2 0C110 0 0 110 0 245.2s110 245.2 245.2 245.2 245.2-110 245.2-245.2S380.4 0 245.2 0zm0 465.9c-121.7 0-220.7-99-220.7-220.7s99-220.7 220.7-220.7 220.7 99 220.7 220.7-99 220.7-220.7 220.7z\"/>\n                        <path d=\"M309.4 185.5l-94 93.5-34.3-34.5c-4.8-4.8-12.5-4.8-17.3-.1-4.8 4.7-4.8 12.5-.1 17.3l42.9 43.2c2.4 2.4 5.5 3.6 8.7 3.6 3.1 0 6.2-1.2 8.6-3.6l102.7-102.1c4.8-4.8 4.8-12.5.1-17.3-4.8-4.8-12.5-4.8-17.3 0z\"/>\n                    </svg>\n                </ng-template>\n                \n                <ng-template ngSwitchCase=\"error\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 490.4 490.4\">\n                        <path d=\"M245.2 490.4c135.2 0 245.2-110 245.2-245.2S380.4 0 245.2 0 0 110 0 245.2s110 245.2 245.2 245.2zm0-465.9c121.7 0 220.7 99 220.7 220.7s-99 220.7-220.7 220.7-220.7-99-220.7-220.7 99-220.7 220.7-220.7z\"/>\n                        <path d=\"M180.3 310.1c2.4 2.4 5.5 3.6 8.7 3.6s6.3-1.2 8.7-3.6l47.6-47.6 47.6 47.6c2.4 2.4 5.5 3.6 8.7 3.6s6.3-1.2 8.7-3.6c4.8-4.8 4.8-12.5 0-17.3l-47.8-47.6 47.6-47.6c4.8-4.8 4.8-12.5 0-17.3s-12.5-4.8-17.3 0l-47.6 47.6-47.6-47.6c-4.8-4.8-12.5-4.8-17.3 0s-4.8 12.5 0 17.3l47.6 47.6-47.6 47.6c-4.8 4.8-4.8 12.5 0 17.3z\"/>\n                    </svg>\n                </ng-template>\n                \n                <ng-template ngSwitchCase=\"warning\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 294.951 294.951\">\n                        <path d=\"M147.475 103.102c-5.22 0-8.7 3.48-8.7 8.7v62.645c0 5.22 3.48 8.7 8.7 8.7 5.22 0 8.7-3.48 8.7-8.7v-62.644c0-5.22-3.48-8.7-8.7-8.7zm5.22 109.628c-3.48-3.48-8.7-3.48-12.18 0-1.74 1.74-1.74 5.22-1.74 6.96 0 3.48 0 5.22 1.74 6.96 1.74 1.74 5.22 1.74 6.96 1.74 1.74 0 5.22 0 3.48-1.74 1.74-1.74 3.48-5.22 3.48-6.96 0-3.48 0-5.22-1.74-6.96z\"/>\n                        <path d=\"M288.425 214.47L185.758 35.238c-6.96-13.92-22.62-22.62-38.283-22.62-15.66 0-29.582 8.7-38.283 22.62L6.525 214.47c-8.7 13.92-8.7 31.322 0 45.243 6.96 13.92 22.62 22.62 38.283 22.62h205.334c17.4 0 31.322-8.7 38.283-22.62 8.7-13.92 8.7-31.322 0-45.243zm-13.92 38.283c-3.48 8.7-12.182 13.92-22.622 13.92H44.808c-8.7 0-17.4-5.22-22.62-13.92-5.22-8.7-5.22-19.14 0-27.842L124.853 45.68c3.48-8.7 12.18-13.92 22.62-13.92 10.442 0 19.142 5.22 24.363 13.92l102.668 179.23c5.22 8.7 5.22 19.142 0 27.843z\"/>\n                    </svg>\n                </ng-template>\n                \n                <ng-template ngSwitchCase=\"info\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 65 65\">\n                        <path d=\"M32.5 0C14.58 0 0 14.58 0 32.5S14.58 65 32.5 65 65 50.42 65 32.5 50.42 0 32.5 0zm0 61C16.785 61 4 48.215 4 32.5S16.785 4 32.5 4 61 16.785 61 32.5 48.215 61 32.5 61z\"/>\n                        <circle cx=\"33.018\" cy=\"19.541\" r=\"3.345\"/>\n                        <path d=\"M32.137 28.342c-1.104 0-2 .896-2 2v17c0 1.104.896 2 2 2s2-.896 2-2v-17c0-1.105-.896-2-2-2z\"/>\n                    </svg>\n                </ng-template>\n            </div>\n            \n            <div class=\"jaspero__dialog-title\">\n                {{type}}!\n            </div>\n            <div class=\"jaspero__dialog-content\">\n                {{incomingData.message}}\n            </div>\n            <div class=\"jaspero__dialog-actions\">\n                <button type=\"button\" class=\"default\" *ngIf=\"incomingData.showCloseButton\" (click)=\"closeSelf()\">Close</button>\n            </div>\n        </div>\n    ",
+        styles: ["\n        :host {\n            display: block;\n            display: -ms-flexbox;\n            display: flex;\n            -ms-flex-flow: column;\n            flex-flow: column;\n            -ms-flex-pack: center;\n            justify-content: center;\n            -ms-flex-align: center;\n            align-items: center;\n            position: fixed;\n            top: 0;\n            right: 0;\n            bottom: 0;\n            left: 0;\n            z-index: 108;\n            pointer-events: auto;\n        }\n\n        .jaspero__overlay {\n            top: 0;\n            right: 0;\n            bottom: 0;\n            left: 0;\n            background-color: rgba(141, 150, 165, 0.71);\n            transform: translateZ(0);\n            opacity: 0;\n            transition: all .5s cubic-bezier(.35,0,.25,1);\n            position: fixed;\n            z-index: 109;\n        }\n\n        .jaspero__dialog {\n            min-width: 300px;\n            max-width: 400px;\n            max-height: 50%;\n            display: -ms-flexbox;\n            display: flex;\n            -ms-flex-flow: column;\n            flex-flow: column;\n            overflow: hidden;\n            position: relative;\n            z-index: 110;\n            outline: none;\n            border-radius: 2px;\n            opacity: 0;\n            box-shadow: 0 7px 9px -4px rgba(0,0,0,.2), 0 14px 21px 2px rgba(0,0,0,.14), 0 5px 26px 4px rgba(0,0,0,.12);\n            -ms-transform: scale(.9,.85);\n            transform: scale(.9,.85);\n            -ms-transform-origin: center center;\n            transform-origin: center center;\n            transition: opacity .4s cubic-bezier(.25,.8,.25,1),transform .4s cubic-bezier(.25,.8,.25,1) .05s;\n            will-change: opacity,transform;\n            background-color: #fff;\n            color: rgba(0, 0, 0, .87);\n        }\n\n        .jaspero__dialog-icon {\n            padding: 40px 20px 0;\n            text-align: center;\n        }\n        .jaspero__dialog-icon svg {\n            width: 80px;\n            height: 80px;\n        }\n\n        .jaspero__dialog-icon svg path {\n            fill: white;\n        }\n\n        .jaspero__dialog-title {\n            font-size: 24px;\n            letter-spacing: .005em;\n            line-height: 26px;\n            margin-bottom: 20px;\n            padding: 20px 20px 0;\n            text-transform: capitalize;\n            text-align: center;\n            font-weight: 500;\n        }\n\n        .jaspero__dialog-content {\n            padding: 0 20px 30px;\n            -ms-flex: 1;\n            flex: 1;\n            overflow: auto;\n            position: relative;\n            text-align: center;\n            font-weight: 400;\n        }\n\n        .jaspero__dialog-actions {\n            min-height: 45px;\n            padding: 0;\n            display: -ms-flexbox;\n            display: flex;\n            -ms-flex-align: center;\n            align-items: center;\n            -ms-flex-pack: end;\n            justify-content: flex-end;\n            position: relative;\n        }\n\n        .jaspero__dialog-actions button {\n            width: 100%;\n            min-height: 45px;\n            margin: 0;\n            padding: 0 16px;\n            display: inline-block;\n            position: relative;\n            overflow: hidden;\n            outline: none;\n            -webkit-user-select: none;\n            -moz-user-select: none;\n            -ms-user-select: none;\n            user-select: none;\n            cursor: pointer;\n            background: rgba(141, 150, 165, 0.2);\n            border: 0;\n            border-radius: 2px;\n            transition: all .4s cubic-bezier(.25,.8,.25,1);\n            color: currentColor;\n            font-family: inherit;\n            font-size: 14px;\n            font-style: inherit;\n            font-variant: inherit;\n            font-weight: 500;\n            letter-spacing: inherit;\n            line-height: 45px;\n            text-align: center;\n            text-transform: uppercase;\n            text-decoration: none;\n            vertical-align: top;\n            white-space: nowrap;\n        }\n\n        .jaspero__dialog-actions button.default {\n            color: inherit;\n        }\n\n        .jaspero__dialog-actions button.default:hover {\n            background-color: rgba(141, 150, 165, 0.15);\n        }\n\n        .jaspero__dialog-actions button.primary {\n            background-color: #ec4a1d;\n            color: white;\n        }\n\n        .jaspero__dialog-actions button.primary:hover {\n            background-color: #1e88e5;\n        }\n\n        .jaspero__dialog-actions button.raised {\n            box-shadow: 0 1px 5px rgba(0,0,0,.2), 0 2px 2px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);\n        }\n\n        :host(.success) .jaspero__dialog-icon svg path {fill: #17A398}\n        :host(.error) .jaspero__dialog-icon svg path {fill: #D64550}\n        :host(.warning) .jaspero__dialog-icon svg path {fill: #FFC857}\n        :host(.info) .jaspero__dialog-icon svg path, :host(.info) .jaspero__dialog-icon svg circle {fill: #8FBFE0}\n    "],
+        animations: [
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["a" /* trigger */])('overlayAn', [
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["b" /* state */])('void', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])({ opacity: 0 })),
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["b" /* state */])('leave', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])({ opacity: 0 })),
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["b" /* state */])('enter', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])({ opacity: 1 })),
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* transition */])('void => enter', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])('400ms cubic-bezier(.25,.8,.25,1)')),
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* transition */])('enter => leave', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])('400ms cubic-bezier(.25,.8,.25,1)'))
+            ]),
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["a" /* trigger */])('wrapperAn', [
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["b" /* state */])('void', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])({ opacity: 0, transform: 'scale(0.75, 0.75) translate(0, 0)' })),
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["b" /* state */])('leave', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])({ opacity: 0, transform: 'scale(0.75, 0.75) translate(0, 0)' })),
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["b" /* state */])('enter', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])({ opacity: 1, transform: 'scale(1, 1) translate(0, 0)' })),
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* transition */])('void => enter', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])('450ms cubic-bezier(.5, 1.4, .5, 1)')),
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* transition */])('enter => leave', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* animate */])('450ms cubic-bezier(.5, 1.4, .5, 1)'))
+            ])
+        ]
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injector"],
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"]])
+], AlertComponent);
+
+//# sourceMappingURL=alert.component.js.map
+
+/***/ }),
+
+/***/ "../../../../@jaspero/ng2-alerts/dist/src/alerts.component.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__alerts_service__ = __webpack_require__("../../../../@jaspero/ng2-alerts/dist/src/alerts.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__alert_component__ = __webpack_require__("../../../../@jaspero/ng2-alerts/dist/src/alert.component.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertsComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AlertsComponent = (function () {
+    function AlertsComponent(_service, _resolver) {
+        this._service = _service;
+        this._resolver = _resolver;
+        this.settings = {
+            overlay: true,
+            overlayClickToClose: true,
+            showCloseButton: true,
+            duration: 3000
+        };
+    }
+    Object.defineProperty(AlertsComponent.prototype, "defaultSettings", {
+        set: function (settings) {
+            this.settings = Object.assign({}, this.settings, settings);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AlertsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._listener = this._service.alert$.subscribe(function (alert) {
+            if (_this._current) {
+                if (alert.close)
+                    setTimeout(function () { return _this._destroy(); }, 450);
+                else
+                    _this._destroy();
+            }
+            if (alert.close)
+                return;
+            var settingsFinalAsArray = [];
+            for (var key in _this.settings) {
+                var toUse = alert.override[key] !== undefined ? alert.override[key] : _this.settings[key];
+                settingsFinalAsArray.push({ key: key, value: toUse });
+            }
+            var inputProviders = [
+                { key: 'message', value: alert.message },
+                { key: 'type', value: alert.type }
+            ].concat(settingsFinalAsArray).map(function (input) {
+                return { provide: input.key, useValue: input.value };
+            }), resolvedInputs = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ReflectiveInjector"].resolve(inputProviders), injector = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ReflectiveInjector"].fromResolvedProviders(resolvedInputs, _this.compViewContainerRef.parentInjector), factory = _this._resolver.resolveComponentFactory(__WEBPACK_IMPORTED_MODULE_2__alert_component__["a" /* AlertComponent */]), component = factory.create(injector);
+            _this.compViewContainerRef.insert(component.hostView);
+            _this._current = component;
+            _this._latestSub = component.instance.close.subscribe(function (res) {
+                _this._service.alert$.next(res);
+            });
+        });
+    };
+    AlertsComponent.prototype._destroy = function () {
+        /*
+            We run the check twice in case the component timed out
+            This can happen on short durations
+         */
+        if (this._current) {
+            this._current.destroy();
+            this._current = null;
+        }
+        this._latestSub.unsubscribe();
+    };
+    AlertsComponent.prototype.ngOnDestroy = function () {
+        this._listener.unsubscribe();
+    };
+    return AlertsComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('comp', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewContainerRef"] }),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewContainerRef"])
+], AlertsComponent.prototype, "compViewContainerRef", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object),
+    __metadata("design:paramtypes", [Object])
+], AlertsComponent.prototype, "defaultSettings", null);
+AlertsComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'jaspero-alerts',
+        entryComponents: [__WEBPACK_IMPORTED_MODULE_2__alert_component__["a" /* AlertComponent */]],
+        template: "<div #comp></div>"
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__alerts_service__["a" /* AlertsService */],
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ComponentFactoryResolver"]])
+], AlertsComponent);
+
+//# sourceMappingURL=alerts.component.js.map
+
+/***/ }),
+
+/***/ "../../../../@jaspero/ng2-alerts/dist/src/alerts.service.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertsService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var AlertsService = (function () {
+    function AlertsService() {
+        this.alert$ = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__["Subject"]();
+    }
+    AlertsService.prototype.create = function (type, message, settingsOverrides) {
+        if (settingsOverrides === void 0) { settingsOverrides = {}; }
+        this.alert$.next({ type: type, message: message, override: settingsOverrides });
+    };
+    return AlertsService;
+}());
+AlertsService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
+], AlertsService);
+
+//# sourceMappingURL=alerts.service.js.map
+
+/***/ }),
+
 /***/ "../../../../css-loader/lib/css-base.js":
 /***/ (function(module, exports) {
 
@@ -21487,25 +21771,25 @@ module.exports = g;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return AnimationBuilder; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return AnimationFactory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return AUTO_STYLE; });
-/* unused harmony export animate */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return AnimationBuilder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return AnimationFactory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return AUTO_STYLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return animate; });
 /* unused harmony export animateChild */
 /* unused harmony export animation */
 /* unused harmony export group */
 /* unused harmony export keyframes */
 /* unused harmony export query */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return sequence; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return sequence; });
 /* unused harmony export stagger */
-/* unused harmony export state */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return style; });
-/* unused harmony export transition */
-/* unused harmony export trigger */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return state; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return style; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return transition; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return trigger; });
 /* unused harmony export useAnimation */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return NoopAnimationPlayer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return AnimationGroupPlayer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return ɵPRE_STYLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return NoopAnimationPlayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return AnimationGroupPlayer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return ɵPRE_STYLE; });
 /**
  * @license Angular v4.3.2
  * (c) 2010-2017 Google, Inc. https://angular.io/
@@ -22837,11 +23121,11 @@ var ɵPRE_STYLE = '!';
 function optimizeGroupPlayer(players) {
     switch (players.length) {
         case 0:
-            return new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* NoopAnimationPlayer */]();
+            return new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["i" /* NoopAnimationPlayer */]();
         case 1:
             return players[0];
         default:
-            return new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* ɵAnimationGroupPlayer */](players);
+            return new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["j" /* ɵAnimationGroupPlayer */](players);
     }
 }
 function normalizeKeyframes(driver, normalizer, element, keyframes, preStyles, postStyles) {
@@ -22861,10 +23145,10 @@ function normalizeKeyframes(driver, normalizer, element, keyframes, preStyles, p
             if (prop !== 'offset') {
                 normalizedProp = normalizer.normalizePropertyName(normalizedProp, errors);
                 switch (normalizedValue) {
-                    case __WEBPACK_IMPORTED_MODULE_1__angular_animations__["f" /* ɵPRE_STYLE */]:
+                    case __WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* ɵPRE_STYLE */]:
                         normalizedValue = preStyles[prop];
                         break;
-                    case __WEBPACK_IMPORTED_MODULE_1__angular_animations__["g" /* AUTO_STYLE */]:
+                    case __WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* AUTO_STYLE */]:
                         normalizedValue = postStyles[prop];
                         break;
                     default:
@@ -22996,7 +23280,7 @@ var NoopAnimationDriver = (function () {
     };
     NoopAnimationDriver.prototype.animate = function (element, keyframes, duration, delay, easing, previousPlayers) {
         if (previousPlayers === void 0) { previousPlayers = []; }
-        return new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* NoopAnimationPlayer */]();
+        return new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["i" /* NoopAnimationPlayer */]();
     };
     return NoopAnimationDriver;
 }());
@@ -23137,7 +23421,7 @@ function normalizeAnimationEntry(steps) {
     if (Array.isArray(steps)) {
         if (steps.length == 1)
             return steps[0];
-        return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["a" /* sequence */])(steps);
+        return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["f" /* sequence */])(steps);
     }
     return steps;
 }
@@ -23813,7 +24097,7 @@ var AnimationAstBuilderVisitor = (function () {
         var /** @type {?} */ timingAst = constructTimingAst(metadata.timings, context.errors);
         context.currentAnimateTimings = timingAst;
         var /** @type {?} */ styles;
-        var /** @type {?} */ styleMetadata = metadata.styles ? metadata.styles : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["h" /* style */])({});
+        var /** @type {?} */ styleMetadata = metadata.styles ? metadata.styles : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])({});
         if (styleMetadata.type == 5 /* Keyframes */) {
             styles = this.visitKeyframes(/** @type {?} */ (styleMetadata), context);
         }
@@ -23826,7 +24110,7 @@ var AnimationAstBuilderVisitor = (function () {
                 if (timingAst.easing) {
                     newStyleData['easing'] = timingAst.easing;
                 }
-                styleMetadata_1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["h" /* style */])(newStyleData);
+                styleMetadata_1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_animations__["c" /* style */])(newStyleData);
             }
             context.currentTime += timingAst.duration + timingAst.delay;
             var /** @type {?} */ styleAst = this.visitStyle(styleMetadata_1, context);
@@ -23856,7 +24140,7 @@ var AnimationAstBuilderVisitor = (function () {
         if (Array.isArray(metadata.styles)) {
             ((metadata.styles)).forEach(function (styleTuple) {
                 if (typeof styleTuple == 'string') {
-                    if (styleTuple == __WEBPACK_IMPORTED_MODULE_1__angular_animations__["g" /* AUTO_STYLE */]) {
+                    if (styleTuple == __WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* AUTO_STYLE */]) {
                         styles.push(/** @type {?} */ (styleTuple));
                     }
                     else {
@@ -24931,8 +25215,8 @@ var TimelineBuilder = (function () {
         // We use `_globalTimelineStyles` here because there may be
         // styles in previous keyframes that are not present in this timeline
         Object.keys(this._globalTimelineStyles).forEach(function (prop) {
-            _this._backFill[prop] = _this._globalTimelineStyles[prop] || __WEBPACK_IMPORTED_MODULE_1__angular_animations__["g" /* AUTO_STYLE */];
-            _this._currentKeyframe[prop] = __WEBPACK_IMPORTED_MODULE_1__angular_animations__["g" /* AUTO_STYLE */];
+            _this._backFill[prop] = _this._globalTimelineStyles[prop] || __WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* AUTO_STYLE */];
+            _this._currentKeyframe[prop] = __WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* AUTO_STYLE */];
         });
         this._currentEmptyStepKeyframe = this._currentKeyframe;
     };
@@ -24956,7 +25240,7 @@ var TimelineBuilder = (function () {
             if (!_this._localTimelineStyles.hasOwnProperty(prop)) {
                 _this._backFill[prop] = _this._globalTimelineStyles.hasOwnProperty(prop) ?
                     _this._globalTimelineStyles[prop] :
-                    __WEBPACK_IMPORTED_MODULE_1__angular_animations__["g" /* AUTO_STYLE */];
+                    __WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* AUTO_STYLE */];
             }
             _this._updateStyle(prop, val);
         });
@@ -25038,10 +25322,10 @@ var TimelineBuilder = (function () {
             var /** @type {?} */ finalKeyframe = copyStyles(keyframe, true);
             Object.keys(finalKeyframe).forEach(function (prop) {
                 var /** @type {?} */ value = finalKeyframe[prop];
-                if (value == __WEBPACK_IMPORTED_MODULE_1__angular_animations__["f" /* ɵPRE_STYLE */]) {
+                if (value == __WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* ɵPRE_STYLE */]) {
                     preStyleProps.add(prop);
                 }
-                else if (value == __WEBPACK_IMPORTED_MODULE_1__angular_animations__["g" /* AUTO_STYLE */]) {
+                else if (value == __WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* AUTO_STYLE */]) {
                     postStyleProps.add(prop);
                 }
             });
@@ -25160,7 +25444,7 @@ function flattenStyles(input, allStyles) {
     input.forEach(function (token) {
         if (token === '*') {
             allProperties = allProperties || Object.keys(allStyles);
-            allProperties.forEach(function (prop) { styles[prop] = __WEBPACK_IMPORTED_MODULE_1__angular_animations__["g" /* AUTO_STYLE */]; });
+            allProperties.forEach(function (prop) { styles[prop] = __WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* AUTO_STYLE */]; });
         }
         else {
             copyStyles(/** @type {?} */ (token), false, styles);
@@ -25578,7 +25862,7 @@ var TimelineAnimationEngine = (function () {
             throw new Error("Unable to create the animation due to the following errors: " + errors.join("\n"));
         }
         autoStylesMap.forEach(function (styles, element) {
-            Object.keys(styles).forEach(function (prop) { styles[prop] = _this._driver.computeStyle(element, prop, __WEBPACK_IMPORTED_MODULE_1__angular_animations__["g" /* AUTO_STYLE */]); });
+            Object.keys(styles).forEach(function (prop) { styles[prop] = _this._driver.computeStyle(element, prop, __WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* AUTO_STYLE */]); });
         });
         var /** @type {?} */ players = instructions.map(function (i) {
             var /** @type {?} */ styles = autoStylesMap.get(i.element);
@@ -26661,10 +26945,10 @@ var TransitionAnimationEngine = (function () {
         allPreviousPlayersMap.forEach(function (players) { return players.forEach(function (player) { return player.destroy(); }); });
         // PRE STAGE: fill the ! styles
         var /** @type {?} */ preStylesMap = allPreStyleElements.size ?
-            cloakAndComputeStyles(this.driver, enterNodesWithoutAnimations, allPreStyleElements, __WEBPACK_IMPORTED_MODULE_1__angular_animations__["f" /* ɵPRE_STYLE */]) :
+            cloakAndComputeStyles(this.driver, enterNodesWithoutAnimations, allPreStyleElements, __WEBPACK_IMPORTED_MODULE_1__angular_animations__["k" /* ɵPRE_STYLE */]) :
             new Map();
         // POST STAGE: fill the * styles
-        var /** @type {?} */ postStylesMap = cloakAndComputeStyles(this.driver, leaveNodesWithoutAnimations, allPostStyleElements, __WEBPACK_IMPORTED_MODULE_1__angular_animations__["g" /* AUTO_STYLE */]);
+        var /** @type {?} */ postStylesMap = cloakAndComputeStyles(this.driver, leaveNodesWithoutAnimations, allPostStyleElements, __WEBPACK_IMPORTED_MODULE_1__angular_animations__["l" /* AUTO_STYLE */]);
         var /** @type {?} */ rootPlayers = [];
         var /** @type {?} */ subPlayers = [];
         queuedInstructions.forEach(function (entry) {
@@ -26895,7 +27179,7 @@ var TransitionAnimationEngine = (function () {
             // FIXME (matsko): make sure to-be-removed animations are removed properly
             var /** @type {?} */ details = element[REMOVAL_FLAG];
             if (details && details.removedBeforeQueried)
-                return new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* NoopAnimationPlayer */]();
+                return new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["i" /* NoopAnimationPlayer */]();
             var /** @type {?} */ isQueriedElement = element !== rootElement;
             var /** @type {?} */ previousPlayers = flattenGroupPlayers((allPreviousPlayersMap.get(element) || EMPTY_PLAYER_ARRAY).map(function (p) { return p.getRealPlayer(); }));
             var /** @type {?} */ preStyles = preStylesMap.get(element);
@@ -26941,7 +27225,7 @@ var TransitionAnimationEngine = (function () {
         }
         // special case for when an empty transition|definition is provided
         // ... there is no point in rendering an empty animation
-        return new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* NoopAnimationPlayer */]();
+        return new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["i" /* NoopAnimationPlayer */]();
     };
     return TransitionAnimationEngine;
 }());
@@ -26955,7 +27239,7 @@ var TransitionAnimationPlayer = (function () {
         this.namespaceId = namespaceId;
         this.triggerName = triggerName;
         this.element = element;
-        this._player = new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["d" /* NoopAnimationPlayer */]();
+        this._player = new __WEBPACK_IMPORTED_MODULE_1__angular_animations__["i" /* NoopAnimationPlayer */]();
         this._containsRealPlayer = false;
         this._queuedCallbacks = {};
         this._destroyed = false;
@@ -27293,7 +27577,7 @@ function flattenGroupPlayers(players) {
 function _flattenGroupPlayersRecur(players, finalPlayers) {
     for (var /** @type {?} */ i = 0; i < players.length; i++) {
         var /** @type {?} */ player = players[i];
-        if (player instanceof __WEBPACK_IMPORTED_MODULE_1__angular_animations__["e" /* ɵAnimationGroupPlayer */]) {
+        if (player instanceof __WEBPACK_IMPORTED_MODULE_1__angular_animations__["j" /* ɵAnimationGroupPlayer */]) {
             _flattenGroupPlayersRecur(player.players, finalPlayers);
         }
         else {
@@ -87796,12 +88080,12 @@ var BrowserAnimationBuilder = (function (_super) {
     BrowserAnimationBuilder.prototype.build = function (animation) {
         var /** @type {?} */ id = this._nextAnimationId.toString();
         this._nextAnimationId++;
-        var /** @type {?} */ entry = Array.isArray(animation) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__angular_animations__["a" /* sequence */])(animation) : animation;
+        var /** @type {?} */ entry = Array.isArray(animation) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__angular_animations__["f" /* sequence */])(animation) : animation;
         issueAnimationCommand(this._renderer, null, id, 'register', [entry]);
         return new BrowserAnimationFactory(id, this._renderer);
     };
     return BrowserAnimationBuilder;
-}(__WEBPACK_IMPORTED_MODULE_3__angular_animations__["b" /* AnimationBuilder */]));
+}(__WEBPACK_IMPORTED_MODULE_3__angular_animations__["g" /* AnimationBuilder */]));
 BrowserAnimationBuilder.decorators = [
     { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"] },
 ];
@@ -87832,7 +88116,7 @@ var BrowserAnimationFactory = (function (_super) {
         return new RendererAnimationPlayer(this._id, element, options || {}, this._renderer);
     };
     return BrowserAnimationFactory;
-}(__WEBPACK_IMPORTED_MODULE_3__angular_animations__["c" /* AnimationFactory */]));
+}(__WEBPACK_IMPORTED_MODULE_3__angular_animations__["h" /* AnimationFactory */]));
 var RendererAnimationPlayer = (function () {
     /**
      * @param {?} id
@@ -88394,7 +88678,7 @@ function instantiateRendererFactory(renderer, engine, zone) {
     return new AnimationRendererFactory(renderer, engine, zone);
 }
 var SHARED_ANIMATION_PROVIDERS = [
-    { provide: __WEBPACK_IMPORTED_MODULE_3__angular_animations__["b" /* AnimationBuilder */], useClass: BrowserAnimationBuilder },
+    { provide: __WEBPACK_IMPORTED_MODULE_3__angular_animations__["g" /* AnimationBuilder */], useClass: BrowserAnimationBuilder },
     { provide: __WEBPACK_IMPORTED_MODULE_4__angular_animations_browser__["c" /* ɵAnimationStyleNormalizer */], useFactory: instantiateDefaultStyleNormalizer },
     { provide: __WEBPACK_IMPORTED_MODULE_4__angular_animations_browser__["a" /* ɵAnimationEngine */], useClass: InjectableAnimationEngine }, {
         provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["RendererFactory2"],

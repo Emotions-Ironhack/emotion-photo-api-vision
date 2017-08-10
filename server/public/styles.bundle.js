@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "body {\n  background: #3494E6;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: linear-gradient(to right, #EC6EAD, #3494E6);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n}\n\n.navbar {\n   background-color: transparent;\n   background: transparent;\n   border-color: transparent;\n}\n\n.navbar li { color: #000 }\n\na {\n  color: black;\n}\n", ""]);
+exports.push([module.i, "body {\n\twidth: 100wh;\n\theight: 90vh;\n\tcolor: #fff;\n\tbackground: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);\n\tbackground-size: 400% 400%;\n\t-webkit-animation: Gradient 5s ease infinite;\n\tanimation: Gradient 5s ease infinite;\n}\n\n@-webkit-keyframes Gradient {\n\t0% {\n\t\tbackground-position: 0% 50%\n\t}\n\t50% {\n\t\tbackground-position: 100% 50%\n\t}\n\t100% {\n\t\tbackground-position: 0% 50%\n\t}\n}\n\n@keyframes Gradient {\n\t0% {\n\t\tbackground-position: 0% 50%\n\t}\n\t50% {\n\t\tbackground-position: 100% 50%\n\t}\n\t100% {\n\t\tbackground-position: 0% 50%\n\t}\n}\n\n.navbar {\n   background-color: transparent;\n   background: transparent;\n   border-color: transparent;\n}\n\n.navbar li { color: black }\n\n.navbar-default .navbar-brand {\n    color: black;\n}\n", ""]);
 
 // exports
 
