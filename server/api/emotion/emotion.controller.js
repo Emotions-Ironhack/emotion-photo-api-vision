@@ -52,11 +52,15 @@ exports.createEmotion = (req, res) => {
 
   pify(upload)(req, res)
     .then(function() {
-      if (req.body.userRef) userRef = req.body.userRef;
+
+      console.log('req',req.file);
       const hostName = req.get('host');
-      imageURL = hostName.includes('localhost') ?
-        'http://marioms.com/scarlet2.jpg' :
-        `https://${hostName}/uploads/${req.file.filename}`;
+      console.log('hostname',hostName);
+
+      if (req.body.userRef) userRef = req.body.userRef;
+
+      imageURL = process.env.NODE_ENV !== 'production' ? 'http://marioms.com/scarlet2.jpg'
+        : `https://${hostName}/uploads/${req.file.filename}`;
 
       console.log('ImageURL-->',imageURL);
       return imageURL;
