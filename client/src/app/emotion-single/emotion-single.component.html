@@ -6,7 +6,7 @@
       <br>
       <div class="card-block">
         <h4 class="card-title">It seems that you feel...</h4>
-        <h4 class="card-text">...{{ emotion.maxEmotion.name }}...</h4>
+        <h4 class="card-text">...<b><i>{{ emotion.maxEmotion.name }}</i></b>...</h4>
         <h4 class="card-title">...I think you might like this...</h4>
         <a class="btn btn-primary" (click)="createEmotionRecomm()">MUSIC</a>
         <br>
@@ -24,11 +24,11 @@
           <img class="media-object img-thumbnail card-img" src="{{track.artistUrlImg}}" alt="{{track.artistUrlImg}}">
         </div>
         <div class="media-body">
-          <a><h5 class="media-heading">Song: {{track.trackName}}</h5></a>
-          <a><h5 class="media-heading">Album: {{track.albumName}}</h5></a>
-          <a><h5 class="media-heading">Artist: {{track.artistName}}</h5></a>
-          <a href="{{track.linkUrl}}" target="_blank">Link to spotify</a>
-          <a><button type="button" class="btn btn-danger" [@flyInOut]="'in'" (click)="removeMe(i)">Delete</button></a>
+          <a><h5 class="media-heading"><u>Song:</u> <b> {{track.trackName}}</b></h5></a>
+          <a><h5 class="media-heading"><u>Album:</u> <b> {{track.albumName}}</b></h5></a>
+          <a><h5 class="media-heading"><u>Artist:</u>  <b>{{track.artistName}}</b></h5></a>
+          <a href="{{track.linkUrl}}" target="_blank"><b>Link to spotify</b></a>
+          <a><button type="button" class="btn btn-danger btn-xs" [@flyInOut]="'in'" (click)="removeMe(i)">Delete</button></a>
         </div>
       </div>
       <audio class="preview" controls="" name="media"><source src="{{track.previewUrl}}" type="audio/mpeg"></audio>

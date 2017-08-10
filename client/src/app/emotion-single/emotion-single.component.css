@@ -4,6 +4,14 @@
   text-align: center;
 }
 
+.row .media-body{
+  text-align: right;
+}
+
+.row .media-body a{
+  text-decoration: none;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 body {
     font-family: 'Roboto', sans-serif;
@@ -22,7 +30,8 @@ body {
     cursor: pointer;
 }
 .preview {
-  margin-top: 10px; 
+  margin-top: 10px;
+  width: 100%;
 }
 
 .recomm-container {
