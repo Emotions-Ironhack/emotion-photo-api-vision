@@ -24,11 +24,9 @@ export interface AlertSettings {
 export class AddPhotoEmotionComponent implements AlertSettings {
   newImage = { name: '' };
   feedback: string;
+  isCompleted: boolean = false;
 
   public uploader: FileUploader = new FileUploader({ url: URL });
-
-  public hasBaseDropZoneOver: boolean = false;
-  public hasAnotherDropZoneOver: boolean = false;
 
   constructor(public router: Router, public session: SessionService, private _alert: AlertsService) { }
 
@@ -36,14 +34,11 @@ export class AddPhotoEmotionComponent implements AlertSettings {
     overlay : true,
     overlayClickToClose: true,
     showCloseButton: true,
-    // duration: 5000
+    //duration: 5000
   }
 
   open() {
       this._alert.create('success' , 'Image Uploaded!', this.settings);
-      // setTimeout(
-      //   this.router.navigate(['/emotion/user', this.session.user._id])
-      // ,5000);
   }
 
   submit() {
@@ -55,6 +50,7 @@ export class AddPhotoEmotionComponent implements AlertSettings {
       console.log('uploader Progress:', this.uploader.progress);
       console.log('Uploaded finished!');
       this.open();
+      this.isCompleted = true;
     }
   }
 
